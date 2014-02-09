@@ -1,0 +1,29 @@
+<div class="main">
+
+	<h1><%= current_user ? current_user.username.capitalize : "(not logged in)" %>'s Portfolios</h1>
+
+		<div class="portfolio">
+		<table>
+			<thead>
+				<th>Name</th>
+				<th>Type</th>
+				
+			</thead>
+
+		<% current_user.portfolios.each do |p| %>
+			<tbody>
+				<td><%= p.name %></td>
+				<td><%= p.type %></td>
+				
+				<td><%= button_to "X", p, {method: :delete} %></td>
+			<tbody>
+		</div>
+
+		<% end %>
+		
+		</table>
+
+	<%= button_to "Log out", auths_path, method: :delete %><br>
+	<%= link_to "Add Portfolio", action: 'new' %>
+
+</div>

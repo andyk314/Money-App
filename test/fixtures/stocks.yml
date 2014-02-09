@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ticker: MyString
+  company: MyString
+  price: MyString
+  references: 
+
+two:
+  ticker: MyString
+  company: MyString
+  price: MyString
+  references: 
