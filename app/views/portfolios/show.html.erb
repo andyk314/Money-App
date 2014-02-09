@@ -1,3 +1,21 @@
- def show
-  	@art_car = ArtCar.find(params[:id])
-  end
+<div class="main">
+	<h1><%= @portfolio.name %>'s Portfolios</h1>
+
+		<div class="stock">
+		<table>
+			<thead>
+				<th>Ticker</th>
+				<th>Company</th>
+				<th>Price</th>
+			</thead>
+
+		<tbody>
+			<% @portfolio.stocks.each do |stock| %>
+				<td><%= stock.ticker %></td>
+				<td><%= stock.company %></td>
+			<% end %>
+		</tbody>
+		
+		</table>
+
+</div>

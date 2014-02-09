@@ -1,7 +1,7 @@
 Money2::Application.routes.draw do
 
 
-resources :portfolios
+resources :portfolios, only:[:index, :new, :show, :destroy, :create]
 root 'welcome#index'
 
 resources :users, only:[:index, :new, :create]

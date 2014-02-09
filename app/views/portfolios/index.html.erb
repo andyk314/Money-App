@@ -7,14 +7,12 @@
 			<thead>
 				<th>Name</th>
 				<th>Type</th>
-				
 			</thead>
 
 		<% current_user.portfolios.each do |p| %>
 			<tbody>
-				<td><%= p.name %></td>
+				<td><%= link_to p.name, portfolio_path(p)  %></td>
 				<td><%= p.type %></td>
-				
 				<td><%= button_to "X", p, {method: :delete} %></td>
 			<tbody>
 		</div>

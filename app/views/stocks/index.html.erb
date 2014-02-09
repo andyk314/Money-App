@@ -1,8 +1,8 @@
 <div class="main">
 
-	<h1><%= current_user ? current_user.username.capitalize : "(not logged in)" %>'s Portfolio</h1>
+	<h1><%= current_portfolio ? current_portfolio.name : "(not logged in)" %>'s Portfolios</h1>
 
-		<div class="portfolio">
+		<div class="stock">
 		<table>
 			<thead>
 				<th>Ticker</th>
@@ -10,12 +10,10 @@
 				<th>Price</th>
 			</thead>
 
-		<% @stocks.each do |stock| %>
+		<% current_portfolio.stocks.each do |stock| %>
 			<tbody>
 				<td><%= stock.ticker %></td>
-				<td><%=Ystock::Yahoo.quote("appl")[:price]%></td>
 				<td><%= stock.company %></td>
-				
 				<td><%= button_to "X", p, {method: :delete} %></td>
 			<tbody>
 		</div>
@@ -23,8 +21,5 @@
 		<% end %>
 		
 		</table>
-
-	<%= button_to "Log out", auths_path, method: :delete %><br>
-	<%= link_to "Add Stock to Portfolio", action: 'new' %>
 
 </div>
