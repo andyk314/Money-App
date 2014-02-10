@@ -1,5 +1,7 @@
-class PortfoliosController < ApplicationController
 
+class PortfoliosController < ApplicationController
+require 'stock_quote'
+require 'net/http'
   def index
   end
   
@@ -10,6 +12,8 @@ class PortfoliosController < ApplicationController
   def show
     @portfolio = Portfolio.find(params[:id])
   end
+# @stockdata = StockQuote::Stock.quote(company).ask
+# Portfolio.find_by(name:'Chase').stocks.find_by(company: "Google").ticker
 
    def edit
     @portfolio = Portfolio.find(params[:id])
@@ -18,14 +22,12 @@ class PortfoliosController < ApplicationController
   def create
     @portfolio = Portfolio.new(portfolio_params)
     if @portfolio.save
-		# if Portfolio.create(params[:id])
       current_user.portfolios.push(@portfolio)
 			redirect_to action: 'index'
 			flash[:notice] = 'successfully added portfolio!'
 		else
 			render action: 'new'
 		end
-
 	end
 
 
@@ -34,10 +36,16 @@ class PortfoliosController < ApplicationController
 	       redirect_to portfolios_path
   end
 
+
 private
   
   def portfolio_params
     params.require(:portfolio).permit(:name, :type)
+  end
+
+  def company
+    current_portfolio.stocks[0].ticker
+    # @stock = current_portfolio.stocks.find_by(params[:company]).ticker
   end
 
 

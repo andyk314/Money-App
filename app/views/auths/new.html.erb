@@ -3,6 +3,6 @@
 	<%= form_for @user, {url:"/auths", method:"post"} do |user|%>
 	<%= user.text_field :username, :placeholder => "Your username" %><br>
 	<%= user.password_field :password, :placeholder => "Your password" %><br>
-	<%= user.submit "Log In" %>
+	<button type="submit" class="btn btn-lg btn-default"><%= user.submit %></button>
 	<%end%>
 </div>

@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :current_portfolio
+  helper_method :stock_quote
 
+  require 'stock_quote'
 
   # Who is currently logged in, if anyone
   def current_user
@@ -21,4 +23,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def stock_quote(stock)
+    StockQuote::Stock.quote(stock).ask
+  end
 end

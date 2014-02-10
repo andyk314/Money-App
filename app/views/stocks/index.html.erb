@@ -3,7 +3,7 @@
 	<h1><%= current_portfolio ? current_portfolio.name : "(not logged in)" %>'s Portfolios</h1>
 
 		<div class="stock">
-		<table>
+		<table class="table">
 			<thead>
 				<th>Ticker</th>
 				<th>Company</th>
@@ -11,7 +11,7 @@
 			</thead>
 
 		<% current_portfolio.stocks.each do |stock| %>
-			<tbody>
+			<tbody class="table-striped">
 				<td><%= stock.ticker %></td>
 				<td><%= stock.company %></td>
 				<td><%= button_to "X", p, {method: :delete} %></td>

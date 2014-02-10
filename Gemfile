@@ -12,6 +12,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.1.0'
 
 
+
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -35,7 +37,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem "ystock", "~> 0.4.5"
+gem "stock_quote", github: 'tyrauber/stock_quote'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

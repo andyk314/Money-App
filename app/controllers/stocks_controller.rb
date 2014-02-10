@@ -1,13 +1,9 @@
 class StocksController < ApplicationController
-
+require 'stock_quote'
+require 'net/http'
   def index
   end
   
-  def price(company)
-  	puts Ystock::Yahoo.quote(company)
-  end
-
-
 
   def new
   	@stock = Stock.new
@@ -22,6 +18,8 @@ class StocksController < ApplicationController
 		end
 
 	end
+
+  
 
 
   def destroy
