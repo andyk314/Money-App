@@ -1,8 +1,7 @@
 
 <div class="main">
-	<h1><%= @portfolio.name %>'s Holdings</h1>
+	<h1>Portfolio - <%= @portfolio.name %></h1>
 	<h2><%= @company %></h2>
-	
 
 		<div class="stock">
 		<table class="table table-striped table-bordered table-hover table-condensed">
@@ -10,18 +9,23 @@
 				<th>Ticker</th>
 				<th>Company</th>
 				<th>Price</th>
+				<th>Change</th>
+				<th>Percent Change</th>
 			</thead>
 
 		<tbody>
 			<% @portfolio.stocks.each do |stock| %>
 			<tr>
 				<td><%= link_to stock.ticker.upcase, stocks_path %></td>
-				<td><%= stock.company %></td>
-				<td><%= stock_quote(stock.ticker) %></td>
-			</tr>
+				<td><%= stock_name(stock.ticker) %></td>
+				<td><%= stock_price(stock.ticker) %> </td>
+				<td><%= stock_change(stock.ticker) %> </td>
+				<td><%= stock_percent_change(stock.ticker) %> </td>
 			<% end %>
 		</tbody>
-		
 		</table>
+			<%= link_to "Back to Portfolios", action: 'index' %>
+			<%= link_to "Edit Portfolio", stocks_path %>
+
 
 </div>

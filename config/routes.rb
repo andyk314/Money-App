@@ -2,7 +2,7 @@ Money2::Application.routes.draw do
 
 
 resources :portfolios, only:[:index, :new, :show, :destroy, :create, :update, :edit, :patch]
-root 'welcome#index'
+root 'auths#new'
 get 'portfolios/:id' => 'portfolios#edit'
 resources :users, only:[:index, :new, :create]
 delete "auths" => "auths#destroy"

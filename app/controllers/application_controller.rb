@@ -3,10 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
+  helper_method :stock_name
   helper_method :current_user
   helper_method :current_portfolio
-  helper_method :stock_quote
+  helper_method :stock_price
+  helper_method :stock_change
+  helper_method :stock_percent_change
+
   require 'stock_quote'
 
   # Who is currently logged in, if anyone
@@ -22,7 +25,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def stock_quote(stock)
-    StockQuote::Stock.quote(stock).ask
+  def stock_name(stock)
+    StockQuote::Stock.quote(stock).name
   end
+
+  def stock_price(stock)
+    StockQuote::Stock.quote(stock).ask_realtime
+  end
+
+  def stock_change(stock)
+    StockQuote::Stock.quote(stock).change_realtime
+  end
+
+  def stock_percent_change(stock)
+    StockQuote::Stock.quote(stock).percent_change
+  end
+
+
+
 end

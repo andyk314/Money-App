@@ -13,7 +13,8 @@ class AuthsController < ApplicationController
 	# Log them in!
 	def create
 		user = User.find_by(username: params[:user][:username])
-		if user.authenticated?(params[:user][:password])
+		if user!= nil && user.authenticated?(params[:user][:password])
+
 			session[:user_id] = user.id
 			flash[:notice] = "Welcome, #{current_user.username}!"
 			redirect_to portfolios_path

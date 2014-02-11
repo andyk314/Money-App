@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to action: 'index'
 			flash[:notice] = 'sucessfully added user'
+			
 		else
 			render action: 'new'
 		end

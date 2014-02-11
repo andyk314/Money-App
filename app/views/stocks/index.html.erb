@@ -3,23 +3,24 @@
 	<h1><%= current_portfolio ? current_portfolio.name : "(not logged in)" %>'s Portfolios</h1>
 
 		<div class="stock">
-		<table class="table">
-			<thead>
-				<th>Ticker</th>
-				<th>Company</th>
-				<th>Price</th>
-			</thead>
+			<table class="table">
+				<thead>
+					<th>Ticker</th>
+					<th>Company</th>
+					<th>Price</th>
+				</thead>
 
-		<% current_portfolio.stocks.each do |stock| %>
-			<tbody class="table-striped">
-				<td><%= link_to stock.ticker, stock %></td>
-				<td><%= stock.company %></td>
-				<td><%= button_to "X", p, {method: :delete} %></td>
-			<tbody>
+			<% current_portfolio.stocks.each do |stock| %>
+				<tbody class="table-striped">
+					<td><%= link_to stock.ticker.upcase, stock %></td>
+					<td><%= stock_name(stock.ticker) %></td>
+					<td><%= stock_price(stock.ticker)%></td>
+					<td><%= button_to "X", p, {method: :delete} %></td>
+				<tbody>
+			<% end %>
+			</table>
+			<%= link_to "Back to Portfolios", portfolios_path %>
+			<%= link_to "Add Stocks", action: 'new' %>
 		</div>
-
-		<% end %>
-		
-		</table>
 
 </div>

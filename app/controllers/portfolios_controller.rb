@@ -16,7 +16,6 @@ require 'net/http'
 # Portfolio.find_by(name:'Chase').stocks.find_by(company: "Google").ticker
 
    def edit
-
   end
 
   def create
@@ -41,7 +40,7 @@ require 'net/http'
     if @portfolio.update portfolio_params
       redirect_to 'index'
     else
-      render portfolioss_new_path
+      render portfolios_new_path
     end
   end
 
