@@ -1,4 +1,3 @@
-require 'ystock'
 class Stock
   include Mongoid::Document
   field :ticker, type: String

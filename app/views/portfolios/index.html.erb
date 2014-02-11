@@ -17,8 +17,10 @@
 			<tbody>
 				<td><%= link_to p.name, portfolio_path(p)  %></td>
 				<td><%= p.type %></td>
-				<td><%= button_to "Delete", p, {method: :delete} %></td>
+				<td><%= button_to "Delete", p, {method: :delete} %>
+				<%= link_to "Edit", p %></td>
 			<tbody>
+
 		</div>
 
 		<% end %>

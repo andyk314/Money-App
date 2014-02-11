@@ -15,7 +15,7 @@
 		<tbody>
 			<% @portfolio.stocks.each do |stock| %>
 			<tr>
-				<td><%= stock.ticker.upcase %></td>
+				<td><%= link_to stock.ticker.upcase, stocks_path %></td>
 				<td><%= stock.company %></td>
 				<td><%= stock_quote(stock.ticker) %></td>
 			</tr>

@@ -1,0 +1,28 @@
+
+<div class="main">
+	<h1><%= @stock.company %></h1>
+	<h2></h2>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+		<th>Ticker</th>
+		<th>Company</th>
+		<th>Price</th>
+		<th>Change</th>
+		<th>Percent Change</th>
+		<th>P/E</th>
+	</thead>
+
+	<tbody>
+		<td><%= @stock.ticker.upcase %></td>
+		<td><%= @stock.company %></td>
+		<td><%= @price %></td>
+		<td><%= @change %></td>
+		<td><%= @percent_change %></td>
+		<td><%= @pe %></td>
+	</tbody>
+
+
+
+
+</div>

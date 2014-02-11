@@ -16,7 +16,7 @@ require 'net/http'
 # Portfolio.find_by(name:'Chase').stocks.find_by(company: "Google").ticker
 
    def edit
-    @portfolio = Portfolio.find(params[:id])
+
   end
 
   def create
@@ -36,18 +36,20 @@ require 'net/http'
 	       redirect_to portfolios_path
   end
 
+  def update
+    @portfolio = Portfolio.find(params[:id])
+    if @portfolio.update portfolio_params
+      redirect_to 'index'
+    else
+      render portfolioss_new_path
+    end
+  end
+
 
 private
   
   def portfolio_params
     params.require(:portfolio).permit(:name, :type)
   end
-
-  def company
-    current_portfolio.stocks[0].ticker
-    # @stock = current_portfolio.stocks.find_by(params[:company]).ticker
-  end
-
-
 
 end

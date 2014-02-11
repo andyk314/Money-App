@@ -39,6 +39,16 @@ end
 
 gem "stock_quote", github: 'tyrauber/stock_quote'
 
+group :development do
+	gem 'rb-readline'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

@@ -1,17 +1,15 @@
 Money2::Application.routes.draw do
 
 
-resources :portfolios, only:[:index, :new, :show, :destroy, :create]
+resources :portfolios, only:[:index, :new, :show, :destroy, :create, :update, :edit, :patch]
 root 'welcome#index'
-
+get 'portfolios/:id' => 'portfolios#edit'
 resources :users, only:[:index, :new, :create]
 delete "auths" => "auths#destroy"
-
 resources 'auths', only:[:new, :create]
-
 resources :welcome
-
 resources :stocks
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

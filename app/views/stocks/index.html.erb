@@ -12,7 +12,7 @@
 
 		<% current_portfolio.stocks.each do |stock| %>
 			<tbody class="table-striped">
-				<td><%= stock.ticker %></td>
+				<td><%= link_to stock.ticker, stock %></td>
 				<td><%= stock.company %></td>
 				<td><%= button_to "X", p, {method: :delete} %></td>
 			<tbody>
