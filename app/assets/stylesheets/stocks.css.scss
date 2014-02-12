@@ -3,3 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Gochi+Hand);
+@import url(http://fonts.googleapis.com/css?family=BenchNine);
+
+.main {
+	h1 {
+		text-align: center;
+		font-family: 'BenchNine', sans-serif;
+	}
+}

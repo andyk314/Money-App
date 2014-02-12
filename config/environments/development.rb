@@ -25,5 +25,5 @@ Money2::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.middleware.use Rack::LiveReload
+  # config.middleware.use Rack::LiveReload
 end
