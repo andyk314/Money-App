@@ -18,7 +18,7 @@
 				<td><%= link_to p.name, portfolio_path(p)  %></td>
 				<td><%= p.type %></td>
 				<td><%= button_to "Delete", p, {method: :delete} %>
-				<%= link_to "Edit", p %></td>
+				<%= link_to "Edit", edit_portfolio_path(p) %></td>
 			<tbody>
 
 		</div>
@@ -27,7 +27,14 @@
 		
 		</table>
 
-	<%= button_to "Log out", auths_path, method: :delete %><br>
+	<%= button_to "Log out", auths_path, class: "btn btn-danger", method: :delete%><br>
 	<%= link_to "Add Portfolio", action: 'new' %>
 
 </div>
+
+
+
+
+here <br> <br> <br>
+<%= current_portfolio ? current_portfolio : "Nothing" %>
+

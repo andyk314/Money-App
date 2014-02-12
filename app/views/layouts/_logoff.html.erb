@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-usd"></span> Money</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>   </li>
+        <li>   </li>
+      </ul>
+
+
+      <form class="navbar-form navbar-left nav-bar-pulled-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Enter Symbol">
+        </div>
+        <button type="submit" class="btn btn-success ">Look Up</button>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account Settings <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <div class="login">
+              <%= form_for @user, {url:"/auths", method:"post"} do |user|%>
+              <%= button_to "Log out", auths_path, class: "btn btn-danger", method: :delete%><br>
+              <%= link_to "Settings", users_path %>
+              <%end%>
+            </div>
+          </ul>
+        </li>
+      </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

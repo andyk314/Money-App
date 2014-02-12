@@ -3,19 +3,23 @@ class PortfoliosController < ApplicationController
 require 'stock_quote'
 require 'net/http'
   def index
+    @users = User.all
+    @user = User.new
   end
   
   def new
   	@portfolio = Portfolio.new
+    @user = User.new
   end
 
   def show
+    @user = User.new
     @portfolio = Portfolio.find(params[:id])
   end
-# @stockdata = StockQuote::Stock.quote(company).ask
-# Portfolio.find_by(name:'Chase').stocks.find_by(company: "Google").ticker
 
-   def edit
+  def edit
+    @user = User.new
+     @portfolio = Portfolio.find(params[:id])
   end
 
   def create
@@ -38,12 +42,12 @@ require 'net/http'
   def update
     @portfolio = Portfolio.find(params[:id])
     if @portfolio.update portfolio_params
-      redirect_to 'index'
+      flash[:notice] = "Successfully updated my portfolios"
+      redirect_to action: 'index'
     else
-      render portfolios_new_path
+      render action: 'new'
     end
   end
-
 
 private
   

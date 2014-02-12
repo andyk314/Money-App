@@ -2,11 +2,14 @@ class StocksController < ApplicationController
 require 'stock_quote'
 require 'net/http'
   def index
+    @user = User.new
+    
   end
   
 
   def new
   	@stock = Stock.new
+    @user = User.new
   end
 
   def create
@@ -20,9 +23,6 @@ require 'net/http'
 		end
 	end
 
-
-
-
   def destroy
     Stock.find(params[:id]).destroy
     redirect_to stocks_path
@@ -30,13 +30,19 @@ require 'net/http'
 
   def show
     @stock = Stock.find(params[:id])
-    @name = StockQuote::Stock.quote(@stock.ticker).name
+    @user = User.new
+    @name = StockQuote::Stock.quote(@stock.ticker).name.split[0]
     @price = StockQuote::Stock.quote(@stock.ticker).ask_realtime
     @change = StockQuote::Stock.quote(@stock.ticker).change_realtime
     @pe = StockQuote::Stock.quote(@stock.ticker).pe_ratio
     @percent_change = StockQuote::Stock.quote(@stock.ticker).percent_change
     @price = StockQuote::Stock.quote(@stock.ticker).ask_realtime
     @dividend = StockQuote::Stock.quote(@stock.ticker).dividend_yield
+    @days_high = StockQuote::Stock.quote(@stock.ticker).days_high
+    @days_low = StockQuote::Stock.quote(@stock.ticker).days_low
+    @volume = StockQuote::Stock.quote(@stock.ticker).volume
+    @average_daily_volume = StockQuote::Stock.quote(@stock.ticker).average_daily_volume
+    @market_cap = StockQuote::Stock.quote(@stock.ticker).market_capitalization
   end
 
 private

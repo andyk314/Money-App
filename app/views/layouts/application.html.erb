@@ -7,13 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
 
 
+		<p class="notice"><%= flash[:notice] %></p>
+		<p class="error"><%= flash[:error] %></p>
+		
+		<% if current_user %>
+			<%= render 'layouts/logoff' %>
+		<% else %>
+			<%= render 'layouts/login' %>
 
+		<% end %>
+	</header>
 
-
-
-<%= yield %>
-
+	<%= yield %>
+	
 </body>
 </html>

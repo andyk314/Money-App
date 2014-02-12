@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def index
 		@users = User.all
+		@user = User.new
 	end
 
 	def new
@@ -11,8 +12,7 @@ class UsersController < ApplicationController
 		@user = User.new(users_params)
 		if @user.save
 			redirect_to action: 'index'
-			flash[:notice] = 'sucessfully added user'
-			
+			flash[:notice] = 'sucessfully added user'	
 		else
 			render action: 'new'
 		end
