@@ -15,6 +15,10 @@ require 'net/http'
   def show
     @user = User.new
     @portfolio = Portfolio.find(params[:id])
+    @info = []
+    @portfolio.stocks.each do |s|
+      @info.push(StockQuote::Stock.quote(s.ticker))
+    end
   end
 
   def edit

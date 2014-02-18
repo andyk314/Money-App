@@ -1,22 +1,26 @@
 class StocksController < ApplicationController
 require 'stock_quote'
 require 'net/http'
+
   def index
-    @user = User.new
-    
+    @user = User.new 
+    @stocks = Stock.all   
   end
   
 
   def new
-  	@stock = Stock.new
-    @user = User.new
+    @user = User.new    
+    # # @portfolio = Portfolio.find(params[:id])
+    # # @portfolio = Portfolio.new
+    # # @stock = @portfolio.stock.new
+    # @portfolio = Portfolio.find(portfolio_params[:id])
+    # @stock = @portfolio.stock.new
   end
 
   def create
-    @stock = Stock.new(stock_params)
+    @stock = @portfolio.stock.create(stock_params)
 		if @stock.save
-      current_portfolio.stocks.push(@stock)
-				redirect_to action: 'index'
+				redirect_to stocks_path
 				flash[:notice] = 'successfully added stock!'
 		else
 			render action: 'new'
@@ -31,23 +35,24 @@ require 'net/http'
   def show
     @stock = Stock.find(params[:id])
     @user = User.new
-    @name = StockQuote::Stock.quote(@stock.ticker).name.split[0]
-    @price = StockQuote::Stock.quote(@stock.ticker).ask_realtime
-    @change = StockQuote::Stock.quote(@stock.ticker).change_realtime
-    @pe = StockQuote::Stock.quote(@stock.ticker).pe_ratio
-    @percent_change = StockQuote::Stock.quote(@stock.ticker).percent_change
-    @price = StockQuote::Stock.quote(@stock.ticker).ask_realtime
-    @dividend = StockQuote::Stock.quote(@stock.ticker).dividend_yield
-    @days_high = StockQuote::Stock.quote(@stock.ticker).days_high
-    @days_low = StockQuote::Stock.quote(@stock.ticker).days_low
-    @volume = StockQuote::Stock.quote(@stock.ticker).volume
-    @average_daily_volume = StockQuote::Stock.quote(@stock.ticker).average_daily_volume
-    @market_cap = StockQuote::Stock.quote(@stock.ticker).market_capitalization
+    all_info = StockQuote::Stock.quote(@stock.ticker)
+    @name = all_info.name.split[0]
+    @price = all_info.ask_realtime
+    @change = all_info.change_realtime
+    @pe = all_info.pe_ratio
+    @percent_change = all_info.percent_change
+    @price = all_info.ask_realtime
+    @dividend = all_info.dividend_yield
+    @days_high = all_info.days_high
+    @days_low = all_info.days_low
+    @volume = all_info.volume
+    @average_daily_volume = all_info.average_daily_volume
+    @market_cap = all_info.market_capitalization
   end
 
 private
   def stock_params
-    params.require(:stock).permit(:ticker, :company)
+    params.require(:stock).permit(:ticker)
   end
 
 

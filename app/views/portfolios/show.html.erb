@@ -1,5 +1,5 @@
 
-<div class="main">
+<div class="container">
 	<h1>Portfolio - <%= @portfolio.name %></h1>
 	<h2><%= @company %></h2>
 
@@ -14,18 +14,17 @@
 			</thead>
 
 		<tbody>
-			<% @portfolio.stocks.each do |stock| %>
+			<% @info.each do |stock| %>
 			<tr>
-				<td><%= link_to stock.ticker.upcase, stock %></td>
-				<td><%= stock_name(stock.ticker).split[0].split(',')[0] %></td>
-				<td><%= stock_price(stock.ticker) %> </td>
-				<td><%= stock_change(stock.ticker) %> </td>
-				<td><%= stock_percent_change(stock.ticker) %> </td>
+				<td><%= link_to stock.symbol, stocks_path %></td>
+				<td><%= stock.name %></td>
+				<td><%= stock.ask_realtime %> </td>
+				<td><%= stock.change_realtime %> </td>
+				<td><%= stock.percent_change %> </td>
 			<% end %>
 		</tbody>
 		</table>
-			<%= link_to "Back to Portfolios", action: 'index' %>
-			<%= link_to "Add Stocks", new_stock_path%>
-
+			<%= link_to "Back to Portfolios", action: 'index'%>
+			<%= link_to "Add Stocks", stocks_path %>
 
 </div>

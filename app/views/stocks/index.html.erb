@@ -1,6 +1,6 @@
 <div class="main">
 
-	<h1><%= current_portfolio ? current_portfolio.name : "(not logged in)" %>'s Portfolios</h1>
+	
 
 		<div class="stock">
 			<table class="table">
@@ -10,7 +10,7 @@
 					<th>Price</th>
 				</thead>
 
-			<% current_portfolio.stocks.each do |stock| %>
+			<% @stocks.each do |stock| %>
 				<tbody class="table-striped">
 					<td><%= link_to stock.ticker.upcase, stock %></td>
 					<td><%= stock_name(stock.ticker) %></td>

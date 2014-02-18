@@ -1,40 +1,31 @@
-<div class="main">
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-
+<div class="container">
 	<h1><%= current_user ? current_user.username.capitalize : "(not logged in)" %>'s Portfolios</h1>
 
-		<div class="portfolio">
-		<table class="table table-striped table-bordered table-hover table-condensed table-border-color">
-			<thead>
-				<th>Name</th>
-				<th>Type</th>
-				<th></th>
-			</thead>
+		<div class="row">
+			<div class="col-xs-6 col-md-3"></div>
+				<div>
+				<table class="table table-striped table-bordered table-hover table-condensed table-border-color">
+					<thead>
+						<th>Name</th>
+						<th>Type</th>
+					</thead>
 
-		<% current_user.portfolios.each do |p| %>
-			<tbody>
-				<td><%= link_to p.name, portfolio_path(p)  %></td>
-				<td><%= p.type %></td>
-				<td><%= button_to "Delete", p, {method: :delete} %>
-				<%= link_to "Edit", edit_portfolio_path(p) %></td>
-			<tbody>
-
+				<% current_user.portfolios.each do |p| %>
+				<tbody>
+					<td><%= link_to p.name, portfolio_path(p) %></td>
+					<td><%= p.type %></td>
+					<td><%= button_to "Delete", p, {method: :delete} %>
+					<%= link_to "Edit", edit_portfolio_path(p) %></td>
+					<% end %>
+				</tbody>
+				</table>
+			</div>
+			<div class="col-xs-6 col-md-3"></div>
 		</div>
-
-		<% end %>
-		
-		</table>
-
-	<%= button_to "Log out", auths_path, class: "btn btn-danger", method: :delete%><br>
-	<%= link_to "Add Portfolio", action: 'new' %>
-
+		<%= link_to "Log out", auths_path, class: "btn btn-danger", method: :delete %>
+		<%= link_to "Add Portfolio", new_portfolio_path, class: "btn btn-primary"%>
 </div>
 
 
 
-
-here <br> <br> <br>
-<%= current_portfolio ? current_portfolio : "Nothing" %>
 

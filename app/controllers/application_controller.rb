@@ -19,12 +19,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_portfolio
-    if session[:user_id]
-      Portfolio.find_by(user_id: session[:user_id])
-    end
-  end
+  # def current_portfolio
+  #   if session[:user_id]
+  #     Portfolio.find_by(user_id: session[:user_id])
+  #   end
+  # end
 
+
+# Took this out because the functionality is now in the portfolios controller
   def stock_name(stock)
     StockQuote::Stock.quote(stock).name
   end
